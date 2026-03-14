@@ -6,4 +6,7 @@
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=volhapunko_python-project-50&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=volhapunko_python-project-50)
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=volhapunko_python-project-50&metric=coverage)](https://sonarcloud.io/summary/new_code?id=volhapunko_python-project-50)
 ### Asciinema:
+### JSON
 [![asciicast](https://asciinema.org/a/dZ1XOGnjUh80gczf.svg)](https://asciinema.org/a/dZ1XOGnjUh80gczf)
+### YAML
+[![asciicast](https://asciinema.org/a/IiJW2YWEGapnPBTP.svg)](https://asciinema.org/a/IiJW2YWEGapnPBTP)
