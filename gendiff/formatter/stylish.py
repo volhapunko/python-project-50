@@ -3,6 +3,7 @@ def format_value(value):
         return str(value).lower()
     return str(value)
 
+
 def format_stylish(diff, depth=1):
     lines = []
     indent = '    ' * depth
@@ -19,8 +20,10 @@ def format_stylish(diff, depth=1):
         elif status == 'unchanged':
             lines.append(f'{indent}    {key}: {format_value(value)}')
         elif status == 'changed':
-            lines.append(f'{indent[:-2]}  - {key}: {format_value(node['old_value'])}')
-            lines.append(f'{indent[:-2]}  + {key}: {format_value(node['new_value'])}')
+            lines.append(f'{indent[:-2]}  - {key}: {
+                format_value(node['old_value'])}')
+            lines.append(f'{indent[:-2]}  + {key}: {
+                format_value(node['new_value'])}')
         elif status == 'nested':
             lines.append(f'{indent}    {key}: {{')
             lines.extend(format_stylish(node['children'], depth + 1))
