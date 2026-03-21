@@ -1,4 +1,4 @@
-from gendiff.diff import generate_diff
+from gendiff import generate_diff
 from gendiff.file_reader import read_file
     
 
@@ -19,6 +19,29 @@ def test_generate_diff_yaml():
     data2 = read_file('tests/test_data/file2.yml')
     expected_result = read_file(
         'tests/test_data/expected_result.txt'
+        )
+
+    result = generate_diff(data1, data2)
+
+    assert result == expected_result
+
+
+def test_generate_diff_nested_json():
+    data1 = read_file('tests/test_data/file3.json')
+    data2 = read_file('tests/test_data/file4.json')
+    expected_result = read_file(
+        'tests/test_data/expected_nested.txt'
+        )
+
+    result = generate_diff(data1, data2)
+
+    assert result == expected_result
+
+def test_generate_diff_nested_yaml():
+    data1 = read_file('tests/test_data/file3.yml')
+    data2 = read_file('tests/test_data/file4.yml')
+    expected_result = read_file(
+        'tests/test_data/expected_nested.txt'
         )
 
     result = generate_diff(data1, data2)
