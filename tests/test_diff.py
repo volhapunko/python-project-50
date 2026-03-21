@@ -37,6 +37,7 @@ def test_generate_diff_nested_json():
 
     assert result == expected_result
 
+
 def test_generate_diff_nested_yaml():
     data1 = read_file('tests/test_data/file3.yml')
     data2 = read_file('tests/test_data/file4.yml')
