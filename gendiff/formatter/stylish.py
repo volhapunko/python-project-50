@@ -5,6 +5,7 @@ def format_value(value):
         return 'null'
     return str(value)
 
+
 def format_dict(value, depth):
     if not isinstance(value, dict):
         return format_value(value)
