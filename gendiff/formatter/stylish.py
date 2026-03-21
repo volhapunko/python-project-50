@@ -1,7 +1,22 @@
 def format_value(value):
     if isinstance(value, bool):
         return str(value).lower()
+    if value is None:
+        return 'null'
     return str(value)
+
+def format_dict(value, depth):
+    if not isinstance(value, dict):
+        return format_value(value)
+    
+    lines = []
+    indent = '    ' * depth
+    for key, val in (value.items()):
+        lines.append(f"{indent}    {key}: {format_dict(val, depth + 1)}")
+    
+    if not lines:
+        return '{}'
+    return '{\n' + '\n'.join(lines) + f'\n{indent}}}'
 
 
 def format_stylish(diff, depth=1):
@@ -11,23 +26,24 @@ def format_stylish(diff, depth=1):
     for node in diff:
         key = node['key']
         status = node['status']
-        value = node['value']
 
         if status == 'removed':
-            lines.append(f'{indent[:-2]}  - {key}: {format_value(value)}')
+            val = format_dict(node['value'], depth)
+            lines.append(f"{'    ' * (depth - 1)}  - {key}: {val}")
         elif status == 'added':
-            lines.append(f'{indent[:-2]}  + {key}: {format_value(value)}')
+            val = format_dict(node['value'], depth)
+            lines.append(f"{'    ' * (depth - 1)}  + {key}: {val}")
         elif status == 'unchanged':
-            lines.append(f'{indent}    {key}: {format_value(value)}')
+            lines.append(f"{indent}{key}: {format_value(node['value'])}")
         elif status == 'changed':
-            lines.append(f'{indent[:-2]}  - {key}: {
-                format_value(node['old_value'])}')
-            lines.append(f'{indent[:-2]}  + {key}: {
-                format_value(node['new_value'])}')
+            old_val = format_dict(node['old_value'], depth)
+            new_val = format_dict(node['new_value'], depth)
+            lines.append(f"{'    ' * (depth - 1)}  - {key}: {old_val}")
+            lines.append(f"{'    ' * (depth - 1)}  + {key}: {new_val}")
         elif status == 'nested':
-            lines.append(f'{indent}    {key}: {{')
+            lines.append(f"{indent}{key}: {{")
             lines.extend(format_stylish(node['children'], depth + 1))
-            lines.append(f'{indent}    }}')
+            lines.append(f"{indent}}}")
     
     if depth == 1:
         return '\n'.join(['{'] + lines + ['}'])
