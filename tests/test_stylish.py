@@ -1,4 +1,4 @@
-from gendiff.formatter.stylish import format_stylish
+from gendiff.formatters.stylish import format_stylish
 
 
 def test_format_stylish_removed():
@@ -72,3 +72,46 @@ def test_format_stylish_nested():
         '    }\n'
         '}'
     )
+
+
+def test_format_stylish_nested_deep():
+    diff = [
+        {
+            'key': 'a',
+            'status': 'nested',
+            'children': [
+                {
+                    'key': 'b',
+                    'status': 'nested',
+                    'children': [
+                        {
+                            'key': 'c',
+                            'status': 'changed',
+                            'old_value': 'old_val',
+                            'new_value': 'new_val'
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+
+    result = format_stylish(diff)
+
+    assert result == (
+        '{\n'
+        '    a: {\n'
+        '        b: {\n'
+        '          - c: old_val\n'
+        '          + c: new_val\n'
+        '        }\n'
+        '    }\n'
+        '}'
+    )
+
+
+def test_format_stylish_empty():
+    """Пустой diff"""
+    diff = []
+    result = format_stylish(diff)
+    assert result == '{\n}'
