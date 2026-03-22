@@ -19,7 +19,7 @@ def format_plain(diff, path=''):
             current_path = node['key']
 
         if node['status'] == 'nested':
-            lines.extend(format_plain(node['children'], current_path))
+            lines.append(format_plain(node['children'], current_path))
 
         elif node['status'] == 'removed':
             lines.append(f"Property '{current_path}' was removed")
