@@ -1,5 +1,6 @@
 from gendiff.builder.build_diff import build_diff
-from gendiff.formatter.stylish import format_stylish
+from gendiff.formatters.stylish import format_stylish
+from gendiff.formatters.plain import format_plain
 
 
 def generate_diff(data1, data2, format_name='stylish'):
@@ -7,3 +8,5 @@ def generate_diff(data1, data2, format_name='stylish'):
 
     if format_name == 'stylish':
         return format_stylish(diff)
+    elif format_name == 'plain':
+        return format_plain(diff)
