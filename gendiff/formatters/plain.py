@@ -26,7 +26,9 @@ def format_plain(diff, path=''):
 
         elif node['status'] == 'added':
             value = format_plain_value(node['value'])
-            lines.append(f"Property '{current_path}' was added with value: {value}")
+            lines.append(
+                f"Property '{current_path}' was added with value: {value}"
+            )
         elif node['status'] == 'changed':
             old_val = format_plain_value(node['old_value'])
             new_val = format_plain_value(node['new_value'])
