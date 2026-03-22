@@ -6,7 +6,7 @@
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=volhapunko_python-project-50&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=volhapunko_python-project-50)
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=volhapunko_python-project-50&metric=coverage)](https://sonarcloud.io/summary/new_code?id=volhapunko_python-project-50)
 ### Asciinema:
-### JSON (for stylish and plain formats)
-[![asciicast](https://asciinema.org/a/hueL0j2SLIQ7qavy.svg)](https://asciinema.org/a/hueL0j2SLIQ7qavy)
-### YAML (for stylish and plain formats)
-[![asciicast](https://asciinema.org/a/YDZ0dZpPjWe7F6Gl.svg)](https://asciinema.org/a/YDZ0dZpPjWe7F6Gl)
+### For plain files:
+[![asciicast](https://asciinema.org/a/MTPiVN4IxgDaqhJ7.svg)](https://asciinema.org/a/MTPiVN4IxgDaqhJ7)
+### For nested structures (stylish, plain, json formatters):
+[![asciicast](https://asciinema.org/a/ww6k2tGI0ojn84Yk.svg)](https://asciinema.org/a/ww6k2tGI0ojn84Yk)
