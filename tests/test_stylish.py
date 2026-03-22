@@ -111,7 +111,6 @@ def test_format_stylish_nested_deep():
 
 
 def test_format_stylish_empty():
-    """Пустой diff"""
     diff = []
     result = format_stylish(diff)
     assert result == '{\n}'
