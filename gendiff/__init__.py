@@ -1,8 +1,8 @@
 from gendiff.builder.build_diff import build_diff
+from gendiff.file_reader import read_file
 from gendiff.formatters.json import format_json
 from gendiff.formatters.plain import format_plain
 from gendiff.formatters.stylish import format_stylish
-from gendiff.file_reader import read_file
 
 
 def generate_diff(file1, file2, format_name='stylish'):
